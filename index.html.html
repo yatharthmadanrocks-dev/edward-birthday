@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edward.exe</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#000;
+    overflow-x:hidden;
+    color:white;
+}
+
+/* BACKGROUND */
+
+.bg{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(circle at top left,#2a2a2a 0%,transparent 30%),
+    radial-gradient(circle at bottom right,#111 0%,transparent 30%),
+    #000;
+    z-index:-3;
+}
+
+.stars{
+    position:fixed;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:-2;
+}
+
+.star{
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+    opacity:0.7;
+    animation:twinkle 4s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{
+        opacity:0.1;
+        transform:scale(1);
+    }
+    to{
+        opacity:1;
+        transform:scale(2);
+    }
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:30px;
+}
+
+.avatar-container{
+    position:relative;
+    margin-bottom:30px;
+}
+
+.glow-ring{
+    position:absolute;
+    inset:-15px;
+    border-radius:30px;
+    background:linear-gradient(45deg,#fff,#444,#fff);
+    filter:blur(20px);
+    opacity:0.6;
+    animation:spin 8s linear infinite;
+}
+
+@keyframes spin{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.avatar{
+    position:relative;
+    width:280px;
+    border-radius:25px;
+    z-index:2;
+    box-shadow:0 0 30px rgba(255,255,255,0.15);
+    transition:0.4s;
+}
+
+.avatar:hover{
+    transform:scale(1.05);
+}
+
+.title{
+    font-size:clamp(2.5rem,8vw,6rem);
+    font-weight:800;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    background:linear-gradient(to right,#fff,#888,#fff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:shine 5s infinite linear;
+}
+
+@keyframes shine{
+    0%{
+        background-position:-500px;
+    }
+    100%{
+        background-position:500px;
+    }
+}
+
+.subtitle{
+    margin-top:15px;
+    color:#bdbdbd;
+    font-size:1.2rem;
+    max-width:700px;
+    line-height:1.8;
+}
+
+.music{
+    margin-top:35px;
+}
+
+.music button{
+    padding:15px 35px;
+    border:none;
+    border-radius:50px;
+    background:white;
+    color:black;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.3s;
+    font-size:1rem;
+}
+
+.music button:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 20px white;
+}
+
+/* CARDS */
+
+.section{
+    padding:80px 10%;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+    border-radius:30px;
+    padding:35px;
+    transition:0.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:'';
+    position:absolute;
+    width:200%;
+    height:200%;
+    background:linear-gradient(45deg,transparent,rgba(255,255,255,0.08),transparent);
+    transform:rotate(45deg);
+    top:-100%;
+    left:-100%;
+    transition:0.8s;
+}
+
+.card:hover::before{
+    top:100%;
+    left:100%;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 25px rgba(255,255,255,0.1);
+}
+
+.card h2{
+    margin-bottom:15px;
+    font-size:1.5rem;
+}
+
+.card p{
+    color:#d3d3d3;
+    line-height:1.8;
+}
+
+/* QUOTE */
+
+.quote{
+    padding:120px 20px;
+    text-align:center;
+}
+
+.quote h1{
+    font-size:clamp(2rem,6vw,4rem);
+    max-width:1000px;
+    margin:auto;
+    line-height:1.5;
+    color:#f5f5f5;
+}
+
+/* FOOTER */
+
+.footer{
+    padding:40px;
+    text-align:center;
+    color:#777;
+}
+
+/* FLOATING EMOJIS */
+
+.float{
+    position:absolute;
+    animation:float 8s linear infinite;
+    opacity:0.3;
+    font-size:2rem;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+    }
+    to{
+        transform:translateY(-120vh);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<div class="stars"></div>
+
+<div class="float" style="left:10%; animation-delay:0s;">🖤</div>
+<div class="float" style="left:30%; animation-delay:2s;">🍛</div>
+<div class="float" style="left:60%; animation-delay:5s;">🎵</div>
+<div class="float" style="left:80%; animation-delay:1s;">🔥</div>
+
+<section class="hero">
+
+<div class="avatar-container">
+
+<div class="glow-ring"></div>
+
+<img src="edward.png" class="avatar">
+
+</div>
+
+<h1 class="title">EDWARD.EXE</h1>
+
+<p class="subtitle">
+The man.  
+The myth.  
+The pav bhaji destroyer.  
+The black outfit final boss.
+</p>
+
+<div class="music">
+
+<button onclick="playMusic()">
+▶ PLAY GEHRA HUA
+</button>
+
+<audio id="song">
+<source src=" Gehra Hua(KoshalWorld.Com).mp3" type="audio/mp3">
+</audio>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<div class="cards">
+
+<div class="card">
+<h2>🖤 Favorite Color</h2>
+<p>
+Black because normal colors are too weak for Edward's aura.
+</p>
+</div>
+
+<div class="card">
+<h2>🍲 Food Taste</h2>
+<p>
+Pav bhaji + Maharashtrian food = peak existence according to Edward.
+</p>
+</div>
+
+<div class="card">
+<h2>🎧 Favorite Song</h2>
+<p>
+“Gehra Hua” from Dhurander.  
+Pure late night headphone vibes.
+</p>
+</div>
+
+<div class="card">
+<h2>🎮 Avatar Energy</h2>
+<p>
+Bro literally looks like a Roblox legend that appears after defeating 99 bosses.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="quote">
+
+<h1>
+"Some people have birthdays.  
+Edward has a whole cinematic event."
+</h1>
+
+</section>
+
+<div class="footer">
+Made for Edward 🖤  
+Certified legendary human being.
+</div>
+
+<script>
+
+/* PLAY MUSIC */
+
+function playMusic(){
+    document.getElementById("song").play();
+}
+
+/* STARS */
+
+const starsContainer = document.querySelector(".stars");
+
+for(let i=0;i<120;i++){
+
+    let star = document.createElement("div");
+
+    star.classList.add("star");
+
+    star.style.left = Math.random()*100 + "vw";
+    star.style.top = Math.random()*100 + "vh";
+
+    star.style.animationDelay = Math.random()*5 + "s";
+
+    starsContainer.appendChild(star);
+}
+
+</script>
+
+</body>
+</html>
